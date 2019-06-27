@@ -7,7 +7,7 @@ RUN yum -y update \
  && yum -y install which tar hostname net-tools wget \
  && yum -y clean all
 
-ARG version=2016.2.1.803.0
+ARG version=2017.2.1.801.3
 ARG product=cache
 
 ENV TMP_INSTALL_DIR=/tmp/distrib
@@ -21,12 +21,13 @@ ENV ISC_PACKAGE_INSTANCENAME=$product \
 # set-up and install Caché from distrib_tmp dir 
 WORKDIR ${TMP_INSTALL_DIR}
 
-RUN wget -qO - ftp://user:user@localhost/$product-$version-lnxrhx64.tar.gz | tar xvfzC - . \
- && [[ -d "$product-$version-lnxrhx64" ]] && ./$product-$version-lnxrhx64/cinstall_silent || ./cinstall_silent \
+ADD $product-$version-lnxrhx64.tar.gz .
+
+RUN ./$product-$version-lnxrhx64/cinstall_silent || ./cinstall_silent \
  && ccontrol stop $ISC_PACKAGE_INSTANCENAME quietly \
  && wget -q https://github.com/daimor/ccontainermain/releases/download/0.7.1/ccontainermain -O /ccontainermain \
  && chmod +x /ccontainermain \
- && rm -rf $TMP_INSTALL_DIR 
+ && rm -rf $TMP_INSTALL_DIR
 
 WORKDIR ${ISC_PACKAGE_INSTALLDIR}
 
