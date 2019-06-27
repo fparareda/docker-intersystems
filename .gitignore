@@ -1,1 +1,26 @@
+# Intellij
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Mac
+.DS_Store
+
+# Maven
+target/
+
+# Logs
+*.log
+
+*/src/test/java/tests/
+
+output
+seq
+results
+
+# Project
+cache.key
+*.tgz
+*.tar.gz
 ftp
