@@ -30,8 +30,8 @@ RUN ./$product-$version-lnxrhx64/cinstall_silent || ./cinstall_silent \
  && rm -rf $TMP_INSTALL_DIR
 
 WORKDIR ${ISC_PACKAGE_INSTALLDIR}
-
-COPY --chown=root:root ccontrol-wrapper.sh /usr/local/bin/ccontrol
+COPY ccontrol-wrapper.sh /usr/local/bin/ccontrol
+RUN chmod 777 /usr/local/bin/ccontrol
 
 # TCP sockets that can be accessed if user wants to (see 'docker run -p' flag)
 EXPOSE 57772 1972
