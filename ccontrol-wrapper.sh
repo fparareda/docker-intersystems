@@ -9,4 +9,4 @@ if [ "${1,,}" == "start" ] && [ $filesystemIsOverlay -eq 0 ]; then
     find / -name CACHE.DAT -exec touch {} \;
 fi
 
-# /usr/local/etc/cachesys/ccontrol $@
+/usr/local/etc/cachesys/ccontrol $@
