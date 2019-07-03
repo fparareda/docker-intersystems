@@ -1,6 +1,6 @@
 FROM centos:6
 
-LABEL maintainer="Dmitry Maslennikov <mrdaimor@gmail.com>"
+LABEL maintainer="Ferran Parareda <ferran.parareda@gmail.com>"
 
 # update OS + dependencies & run Caché silent instal
 RUN yum -y update \
